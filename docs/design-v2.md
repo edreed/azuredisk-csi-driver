@@ -24,7 +24,7 @@ workloads/controllers/deployment/) with leader election.
 ### Node Plug-in
 
 In addition to the CSI Node API Server, this plug-in also provides feedback for pod placement 
-used by the scheduler extended described below.
+used by the scheduler extender described below.
 
 The node plug-in is deployed on each node in the cluster as a [DaemonSet](https://kubernetes.
 io/docs/concepts/workloads/controllers/daemonset/).
@@ -110,7 +110,7 @@ controller also sets the `.Status.State` field to `Attached` and a finalizer to 
 request is complete when the state of the primary node attachment is complete.
 
 When the `ControllerUnpublishVolume` API in the CSI Controller plug-in is called, it deletes 
-the `AzVolumeAttachment` instance for the current (primary) node. The controller respons by 
+the `AzVolumeAttachment` instance for the current (primary) node. The controller responds by 
 detaching the managed disk from the primary and mount replica nodes. It removes the finalizer 
 from the `AzVolumeAttachment` instances as each detach operation completes. The 
 `ControllerUnpublishVolume` request is complete when all detach operations have completed and 

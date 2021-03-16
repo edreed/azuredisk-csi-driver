@@ -86,10 +86,9 @@ state is updated.
 
 To delete a managed disk, the `DeleteVolume` API in the CSI Controller plug-in deletes the 
 corresponding `AzVolume` instance. The controller responds to deletion by garbage collecting 
-the managed disk based on the `reclaimPolicy` set in the `StorageClass`. When the reclaim 
-policy has been applied, the controller removes the finalizer from the `AzVolume` instance. 
-The `DeleteVolume` request completes once the `AzVolume` instance has been removed from the 
-object store.
+the managed disk. When the managed disk has been deleted, the controller removes the finalizer
+from the `AzVolume` instance. The `DeleteVolume` request completes once the `AzVolume` instance
+has been removed from the object store.
 
 #### `AzVolumeAttachment` Resource and Controller
 
